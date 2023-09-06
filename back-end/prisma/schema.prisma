@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -8,4 +5,98 @@ generator client {
 datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
+}
+
+enum Nivel {
+  BASICO
+  INTERMEDIARIO
+  AVANCADO
+}
+
+enum Area {
+  HUMANAS
+  EXATAS
+  BIOLOGICAS
+}
+
+enum Uf {
+  DF
+  GO
+  MG
+  MS
+  RS
+  RJ
+  SP
+  SC
+  ES
+  PA
+  AM
+  SA
+  RN
+  TO
+  RO
+  SE
+  MA
+  RE
+}
+
+enum DiaSemana {
+  DOM
+  SEG
+  TER
+  QUA
+  QUI
+  SEX
+  SAB
+}
+
+model Curso {
+  id             String        @id @default(auto()) @map("_id") @db.ObjectId
+  nome           String
+  nivel          Nivel         @default(BASICO)
+  area           Area
+  valorTotal     Float
+  turmas         Turma[]
+}
+
+model Professor {
+  id              String      @id @default(auto()) @map("_id") @db.ObjectId
+  nome            String
+  formacao        String
+  cpf             String      @unique
+  dataNascimento  DateTime
+  email           String      @unique
+  telefone        String
+  turmas          Turma[]
+}
+
+model Aluno {
+  id             String       @id @default(auto()) @map("_id") @db.ObjectId
+  nome           String
+  cpf            String       @unique
+  dataNascimento DateTime
+  logradouro     String
+  numImovel      String
+  complemento    String?      // Campo opcional
+  bairro         String
+  municipio      String
+  uf             Uf
+  email          String       @unique
+  telefone       String
+  turmaIds       String[]     @db.ObjectId
+  turmas         Turma[]      @relation(fields: [turmaIds], references: [id])
+}
+
+model Turma {
+  id             String       @id @default(auto()) @map("_id") @db.ObjectId
+  cursoId        String       @db.ObjectId
+  curso          Curso        @relation(fields: [cursoId], references: [id])
+  professorId    String?      @db.ObjectId
+  professor      Professor?   @relation(fields: [professorId], references: [id])
+  diaSemana      DiaSemana
+  horaInicial    Int
+  horaFinal      Int
+  ativa          Boolean      @default(true)
+  alunoIds       String[]     @db.ObjectId
+  alunos         Aluno[]      @relation(fields: [alunoIds], references: [id])
 }
