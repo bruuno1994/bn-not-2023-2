@@ -20,4 +20,84 @@ controller.create = async function (req, res) {
   }
 }
 
+controller.retrieveAll = async function(req, res) {
+  try {
+    
+    const result = await prisma.curso.findMany({
+      orderBy: [
+        {nome: 'asc'},    // Ordem crescente
+        {nivel: 'asc'}    // ORdem decrescente
+      ]
+    })
+      res.send(result)
+
+  } catch (error) {
+
+    console.error(error)
+      res.status(500).send(error)
+
+  }
+}
+
+controller.retrieveOne = async function(req, res) {
+  try {
+
+    const result = await prisma.curso.findUnique({
+      where: { id: req.params.id }
+    })
+
+    if(result) {
+      res.send(result)
+    } else {
+      res.status(404).end()
+    }
+    
+  } catch (error) {
+
+    console.error(error)
+      res.status(500).send(error)
+
+  }
+}
+
+controller.update = async function(req, res) {
+  try {
+
+    const result = prisma.curso.update({
+      where: { id: req.params.id },
+      data: req.body
+    })
+
+    console.log(result);
+
+    if(result) {
+      res.status(204).end()
+    } else {
+      res.status(404).end()
+    }
+    
+  } catch (error) {
+    
+    console.error(error)
+      res.status(500).send(error)
+
+  }
+}
+
+controller.delete = async function(req, res) {
+  try {
+
+    const result = await prisma.curso.delete({
+      where: { id: req.params.id }
+    })
+
+    if(result) res.status(204).end()
+    else res.status(404).end()
+
+  } catch (error) {
+    console.error(error)
+      res.status(500).send(error)
+  }
+}
+
 export default controller
