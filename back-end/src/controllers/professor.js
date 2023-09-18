@@ -5,7 +5,7 @@ const controller = {} // Objeto vazio
 controller.create = async function (req, res) {
   try {
     // Conecta-se ao BD e envia uma instrução de criação de um novo documento, com os dados que estão dentro do req.body
-    await prisma.curso.create({ data: req.body })
+    await prisma.professor.create({ data: req.body })
 
     // Envia uma resposta de sucesso ao front-end
     // HTTP 201: Created
@@ -23,10 +23,9 @@ controller.create = async function (req, res) {
 controller.retrieveAll = async function(req, res) {
   try {
     
-    const result = await prisma.curso.findMany({
+    const result = await prisma.professor.findMany({
       orderBy: [
         {nome: 'asc'},    // Ordem crescente
-        {nivel: 'asc'}    // ORdem decrescente
       ]
     })
       res.send(result)
@@ -42,7 +41,7 @@ controller.retrieveAll = async function(req, res) {
 controller.retrieveOne = async function(req, res) {
   try {
 
-    const result = await prisma.curso.findUnique({
+    const result = await prisma.professor.findUnique({
       where: { id: req.params.id }
     })
 
@@ -63,7 +62,7 @@ controller.retrieveOne = async function(req, res) {
 controller.update = async function(req, res) {
   try {
 
-    const result = await prisma.curso.update({
+    const result = await prisma.professor.update({
       where: { id: req.params.id },
       data: req.body
     })
@@ -87,7 +86,7 @@ controller.update = async function(req, res) {
 controller.delete = async function(req, res) {
   try {
 
-    const result = await prisma.curso.delete({
+    const result = await prisma.professor.delete({
       where: { id: req.params.id }
     })
 
