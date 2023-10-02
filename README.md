@@ -41,9 +41,11 @@ PROJETO BACK-END
 
 ### _Route_
     1. Copie o arquivo de _route_ (`Ctrl+c e Ctrl+v`) e renomeie-o de acordo com a nova entidade para a qual está sendo feito o CRUD.
+
     2. Na linha de `import` do _controller_, substitua o nome da entidade antiga, pelo nome da entidade nova.
 
 ### Arquivo `app.js`
+
     1. Na poarte inferior, do arquivo, na seção de rotas, copie e cole as duas linhas correspondentes a uma rota já existente, e faça as substituições necessárias.
 
     2. São **quatro substituições** ao todo, duas em cada linha.
