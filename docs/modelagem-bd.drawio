@@ -1,11 +1,13 @@
 <mxfile host="65bd71144e">
     <diagram id="ko68k73PWH7Gud72M-r9" name="Página-2">
-        <mxGraphModel dx="729" dy="1390" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+        <mxGraphModel dx="738" dy="1390" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
                 <mxCell id="dzI9R8WdITk1JNDo9tBr-1" value="Aluno" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
-                    <mxGeometry x="80" y="90" width="170" height="364" as="geometry"/>
+                    <mxGeometry x="80" y="90" width="170" height="364" as="geometry">
+                        <mxRectangle x="80" y="90" width="70" height="30" as="alternateBounds"/>
+                    </mxGeometry>
                 </mxCell>
                 <mxCell id="dzI9R8WdITk1JNDo9tBr-2" value="_id: ObjectId" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="dzI9R8WdITk1JNDo9tBr-1" vertex="1">
                     <mxGeometry y="26" width="170" height="26" as="geometry"/>
@@ -64,7 +66,7 @@
                 <mxCell id="3" value="turmas: Turma[]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="dzI9R8WdITk1JNDo9tBr-5" vertex="1">
                     <mxGeometry y="130" width="140" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="4" value="valorTotal: Float" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="dzI9R8WdITk1JNDo9tBr-5">
+                <mxCell id="4" value="valorTotal: Float" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="dzI9R8WdITk1JNDo9tBr-5" vertex="1">
                     <mxGeometry y="156" width="140" height="26" as="geometry"/>
                 </mxCell>
                 <mxCell id="dzI9R8WdITk1JNDo9tBr-9" value="Turma" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
@@ -88,7 +90,7 @@
                 <mxCell id="dzI9R8WdITk1JNDo9tBr-32" value="hora_final: Int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="dzI9R8WdITk1JNDo9tBr-9" vertex="1">
                     <mxGeometry y="156" width="140" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="10" value="alunos: Aluno[]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="dzI9R8WdITk1JNDo9tBr-9">
+                <mxCell id="10" value="alunos: Aluno[]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="dzI9R8WdITk1JNDo9tBr-9" vertex="1">
                     <mxGeometry y="182" width="140" height="28" as="geometry"/>
                 </mxCell>
                 <mxCell id="3eeboNgc8xd-XrbrIplP-5" value="ativa: Boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="dzI9R8WdITk1JNDo9tBr-9" vertex="1">
