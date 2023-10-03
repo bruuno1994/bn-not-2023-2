@@ -4,6 +4,9 @@ const controller = {}   // Objeto vazio
 
 controller.create = async function(req, res) {
   try {
+
+
+
     // Conecta-se ao BD e envia uma instrução
     // de criação de um novo documento, com os
     // dados que estão dentro de req.body
@@ -23,9 +26,15 @@ controller.create = async function(req, res) {
 }
 
 controller.retrieveAll = async function(req, res) {
+
+  const include = {}
+
+  if(req.query.turmas)  include.turmas = true
+
   try {
     // Manda buscar os dados no servidor
     const result = await prisma.aluno.findMany({
+      include,
       orderBy: [
         { nome: 'asc' }  // Ordem ascendente
       ]
@@ -99,6 +108,38 @@ controller.delete = async function(req, res) {
     console.error(error)
     // Envia o erro ao front-end, com status 500
     // HTTP 500: Internal Server Error
+    res.status(500).send(error)
+  }
+}
+
+controller.addTurma = async function(req, res) {
+  try {
+
+    // Busca o aluno para recuperar a lista de Ids de turmas dele
+    const aluno = await prisma.aluno.findUnique({
+      where: {id: req.params.alunoId}
+    })
+
+    // Se ele não tiver turmas ainda, criamos a lista vazia
+    const turmaIds = aluno.turmaIds || []
+
+    // Se o id de turma passado ainda não estiver na lista do aluno, fazemos a respectiva inserção
+    if(! turmaIds.include(req.params.turmaId))
+      turmaIds.push(req.params.turmaId)
+
+      // Atualizamos o aluno com uma lista de ids de turma atualizada
+      const result = await prisma.aluno.update({
+        where: { id: req.params.id },
+        data: { turmaIds }
+      })
+  
+      // Encontrou e atualizou ~> retorna HTTP 204: No content
+      if(result) res.status(204).end()
+      // Não encontrou (e não atualizou) ~> retorna HTTP 404: Not found
+      else res.status(404).end()
+
+  } catch (error) {
+    console.error(error)
     res.status(500).send(error)
   }
 }
